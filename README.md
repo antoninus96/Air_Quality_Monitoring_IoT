@@ -13,3 +13,6 @@ Due to the consistent binary dimension this code cannot be used on the DISCO-L07
 
 ### P-NUCLEO-IKA02A1
 The folder called P-NUCLEO-IKA02A1 contains the code used to test the P-NUCLEO-IKA02A1 carbon monoxide sensor, which is not compatible with the DISCO-L072CZ-LRWAN1 board due to the lack of the A2, A3 and A5 analog pins; however this code works on the NUCLEO-F401RE board but it has some unspecified pin conflicts since the sensor stops working when other digital pins are used (eg. D14 and D15).
+
+### STEVAL-MKI141V2
+The folder called STEVAL-MKI141V2 contains the code used to test the humidity and temperature on environment. It is connected directly with Lora to upload the data on cloud. The sensor is powered with 3.3V and uses the SDA and SCL pins, respectively, for data transmission and clock. As can be seen from the code, once the sensor is started, it is possible to receive data using the get_temperature () and get_humidity function.
