@@ -17,5 +17,5 @@ The folder called P-NUCLEO-IKA02A1 contains the code used to test the P-NUCLEO-I
 ### STEVAL-MKI141V2
 The folder called STEVAL-MKI141V2 contains the code used to test the humidity and temperature on environment. It is connected directly with Lora to upload the data on cloud. The sensor is powered with 3.3V and uses the SDA and SCL pins, respectively, for data transmission and clock. As can be seen from the code, once the sensor is started, it is possible to receive data using the get_temperature () and get_humidity function.
 
-### Web Data Connector from InfluxDB to Tablau
+### Web Data Connector from InfluxDB to Tableau
 The folder called WDC_Influx contains the two files (HTML and Javascript) that allow to create the bidirectional channel between InfluxDB and Tableau. It uses the * [Tableau libraries](https://connectors.tableau.com/libs/tableauwdc-2.3.latest.js), first taking the list of databases in InfluxDB and then loading the schema in Tableau.
