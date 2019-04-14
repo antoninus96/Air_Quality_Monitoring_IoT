@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>InfluxDB Connector</title>
+    <meta http-equiv="Cache-Control" content="no-store"/>
+
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <script src="https://connectors.tableau.com/libs/tableauwdc-2.3.latest.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <!-- https://packagist.org/packages/snapappointments/bootstrap-select -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <script src="node_modules/bootstrap-show-password/bootstrap-show-password.js"></script>
+    <script src="InfluxDB_WDC.js" type="text/javascript"></script>
+<style>
+#tit {
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+    <div  class="text-center">
+        <h1 style="margin-top:30px;" id="tit">Air quality monitoring</h1>
+    </div>    
+ 
+
+    <div class="row" style="display: none;">
+
+
+        <div class="input-group mb-3 col-sm">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" id="protocol_selector_button">https://
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item proto_sel" href="#">https://</a>
+                    <a class="dropdown-item proto_sel" href="#">https://</a>
+                </div>
+            </div>
+            <input type="text" class="form-control" aria-label="..." placeholder="localhost" id="servername" value="marty-c9aef689.influxcloud.net">
+        </div>
+
+        <div class="input-group mb-3 col-sm">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="username-label">Port</span>
+            </div>
+            <input type="text" class="form-control" aria-describedby="username-label"
+                   id="serverport" placeholder="8086" value="8086">
+
+        </div>
+    </div>
+
+
+    <div class="" style="margin-top: 40px;padding:20px;">
+
+    	<p style="font-size:20px;">Upload your databases from InfluxDB and choose the one of interest to display on Tableau</p><div style="clear:both;"></div>
+    	<div id="bbb" style="float:left;margin-right: 10px;">
+    	<button type="button" id="tableButton" class="btn btn-primary" style="font-size:20px;"><b>Upload Influx databases</b>
+            </button>
+       </div><select style="font-size: 15px !important;" class="selectpicker" id="db_dropdown">
+        </select>
+
+       
+    </div>
+
+    <div class="row dflex justify-content-center mb-3" id="querytype" style="display: none;">
+        <div class="col-sm text-left">
+            <h4>3. Query Type</h4>
+        </div>
+        <div class="col-sm btn-group btn-group-toggle qtype" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="radio" name="options" id="querytype_all" autocomplete="off" data-val="all" checked>
+                All Rows
+            </label>
+            <label class="btn btn-secondary qtype">
+                <input type="radio" name="options" id="querytype_aggregation" autocomplete="off" data-val="aggregation">
+                Use Aggregation
+            </label>
+            <label class="btn btn-secondary qtype">
+                <input type="radio" name="options" id="querytype_custom" autocomplete="off" data-val="custom"> Custom
+                SQL
+            </label>
+        </div>
+    </div>
+
+
+    <div class="collapse" id="aggregationGroup" style="display: none;">
+        <div class="row mb-3">
+
+
+            <div class="input-group mb-3 col-sm d-flex justify-content-end">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Group By</span>
+                </div>
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" id="aggregation_selector_button">
+                        mean
+                        <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu" id="aggregation_selector">
+                        <a class="dropdown-item" class="dropdown-item" href="#">count</a>
+                        <a class="dropdown-item" class="dropdown-item" href="#">distinct</a>
+                        <a class="dropdown-item" class="dropdown-item" href="#">integral</a>
+                        <a class="dropdown-item" class="dropdown-item" href="#">mean</a>
+                        <a class="dropdown-item" class="dropdown-item" href="#">median</a>
+                        <a class="dropdown-item" class="dropdown-item" href="#">mode</a>
+                        <a class="dropdown-item" class="dropdown-item" href="#">spread</a>
+                        <a class="dropdown-item" class="dropdown-item" href="#">stddev</a>
+                        <a class="dropdown-item" class="dropdown-item" href="#">sum</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="input-group mb-3 col-sm" style="display: none;">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Interval</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Interval Time" placeholder="30" id="interval_time">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" id="interval_measure_button">minutes
+                        <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu" id="interval_measure">
+                        <a class="dropdown-item" href="#" data-prefix="u">microseconds</a>
+                        <a class="dropdown-item" href="#" data-prefix="ms">milliseconds</a>
+                        <a class="dropdown-item" href="#" data-prefix="s">seconds</a>
+                        <a class="dropdown-item" href="#" data-prefix="m">minutes</a>
+                        <a class="dropdown-item" href="#" data-prefix="h">hours</a>
+                        <a class="dropdown-item" href="#" data-prefix="d">days</a>
+                        <a class="dropdown-item" href="#" data-prefix="w">week</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="collapse" id="customSqlGroup" style="display: none;">
+        <div class="row mb-3">
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Custom InfluxQL</span>
+                </div>
+                <textarea class="form-control" aria-label="With textarea" id="customSql"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center mb-3" style="margin-top: 30px;">
+        <div class="col-sm text-left">
+            
+        </div>
+        <button type="button" id="getSchemaButton" class="btn btn-primary" style="font-size:25px;border:1px #5cb85c;background-color:#5cb85c;" disabled><b>Submit to Tableau</b>
+        </button>
+
+
+    </div>
+    
+
+</div>
+</body>
+
+</html>
