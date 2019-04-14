@@ -6,7 +6,7 @@ This repository contains the code used in the Air Quality Monitoring project pre
 	* [Realization]()
 
 # Architecture
-![alt text](http://operawebpres.it/influx/im)
+![alt text](http://operawebpres.it/influx/im.jpg)
 ### uTensor
 The folder called [benzene_predictor](https://github.com/antoninus96/Air_Quality_Monitoring_IoT/tree/master/benzene_predictor) contains the code that we used to create a Perceptron based predictor of benzene levels, given the values of temperature, relative humidity and carbon monoxide.
 
