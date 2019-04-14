@@ -19,3 +19,9 @@ The folder called STEVAL-MKI141V2 contains the code used to test the humidity an
 
 ### Web Data Connector from InfluxDB to Tableau
 The folder called WDC_Influx contains the two files (HTML and Javascript) that allow to create the bidirectional channel between InfluxDB and Tableau. It uses the [Tableau libraries](https://connectors.tableau.com/libs/tableauwdc-2.3.latest.js), first taking the list of databases in InfluxDB and then loading the schema in Tableau.
+
+### Authors
+* Linkedin:
+	* [Antonio Di Maggio](www.linkedin.com/in/antonino-di-maggio-216479143/)
+	* [Mattia Nicolella](https://www.linkedin.com/in/mattianicolella/)
+	* [Leonardo Salvucci](https://www.linkedin.com/in/leonardo-salvucci/)
