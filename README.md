@@ -3,7 +3,7 @@ This repository contains the code used in the Air Quality Monitoring project pre
 * [Hackster](https://www.hackster.io/151578/air-quality-monitoring-b48e9e) 
 * SlideShare:
 	* [Concept and Technologies](https://www.slideshare.net/MattiaNicolella/air-quality-monitoring-137482560)
-	* [Realization]()
+	* [Realization](https://www.slideshare.net/MattiaNicolella/air-quality-monitoring-final-presentation)
 
 # Architecture
 ![alt text](img/img.jpg)
