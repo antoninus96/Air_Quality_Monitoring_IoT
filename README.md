@@ -23,7 +23,7 @@ The folder called P-NUCLEO-IKA02A1 contains the code used to test the P-NUCLEO-I
 The folder called STEVAL-MKI141V2 contains the code used to test the humidity and temperature on environment. It is connected directly with Lora to upload the data on cloud. The sensor is powered with 3.3V and uses the SDA and SCL pins, respectively, for data transmission and clock. As can be seen from the code, once the sensor is started, it is possible to receive data using the **get_temperature()** and **get_humidity()** functions.
 
 ### B-L072Z-LRWAN1 LoRa®
-The folder called STEVAL-MKI141V2 contains the code used to send the data from LoRa to The Things Network. The B-L072Z-LRWAN1 is directly connected to the NUCLEO-F401RE, that provides the data from the P-NUCLEO-IKA02A1 sensor (CO sensor) and to the STEVAL-MKI141V2 (humidity and temperature). In the folder there is also the JSON file in which we have to modify the EUIs value and the Application Key to connect to our The Things Network application.
+The folder called STEVAL-MKI141V2 contains the code used to send the data from LoRa to [The Things Network](https://www.thethingsnetwork.org). The B-L072Z-LRWAN1 is directly connected to the NUCLEO-F401RE, that provides the data from the P-NUCLEO-IKA02A1 sensor (CO sensor) and to the STEVAL-MKI141V2 (humidity and temperature). In the folder there is also the JSON file in which we have to modify the EUIs value and the Application Key to connect to our The Things Network application.
 
 ### Web Data Connector from InfluxDB to Tableau
 ![alt text](img/img_2.png)
@@ -31,6 +31,6 @@ The folder called WDC_Influx contains the two files (HTML and Javascript) that a
 
 # Authors
 * Linkedin:
-	* [Antonino Di Maggio](www.linkedin.com/in/antonino-di-maggio-216479143/)
+	* [Antonino Di Maggio](https://www.linkedin.com/in/antonino-di-maggio-216479143/)
 	* [Mattia Nicolella](https://www.linkedin.com/in/mattianicolella/)
 	* [Leonardo Salvucci](https://www.linkedin.com/in/leonardo-salvucci/)
