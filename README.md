@@ -28,6 +28,6 @@ The folder called WDC_Influx contains the two files (HTML and Javascript) that a
 
 # Authors
 * Linkedin:
-	* [Antonio Di Maggio](www.linkedin.com/in/antonino-di-maggio-216479143/)
+	* [Antonino Di Maggio](www.linkedin.com/in/antonino-di-maggio-216479143/)
 	* [Mattia Nicolella](https://www.linkedin.com/in/mattianicolella/)
 	* [Leonardo Salvucci](https://www.linkedin.com/in/leonardo-salvucci/)
